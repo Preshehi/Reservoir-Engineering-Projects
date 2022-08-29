@@ -1,10 +1,14 @@
+#import important libraries
 import tkinter
-import Errors
 from tkinter.font import Font
-import About
-import Help
 import math
 
+#import supporting modules
+import About
+import Help
+import Errors
+
+#create the cassandra object which embodies the entire app
 class Cassandra(tkinter.Tk):
 	def __init__(self,parent):
 		tkinter.Tk.__init__(self,parent)
@@ -344,7 +348,7 @@ class Cassandra(tkinter.Tk):
 				Errors.DepletedRes(self.parent,app)
 				return
 
-		#Now attempt to solve for CDD
+		#Now attempt to solve for Critical Drawdown (CDD)
 		UCS=float(_UCS)
 		A=(3*float(_max))-float(_min)
 		num1=((0.5*m)/UCS)+(2/UCS)
@@ -374,6 +378,7 @@ class Cassandra(tkinter.Tk):
 		self._cddresult.config(text="Critical Drawdown: \t{0:.2f}{1}".format(self._CDD,_unit))
 		self._comment_label.config(text="Comment: \t{0}{1}".format("Comment", "here"))
 
+	#convert the drawdown into flowing rate as this is more relatable
 	def SolveRate(self):
 		ftype=self._fluid_list.curselection()[0]
 		k=float(self._perm_entry.get())
@@ -390,6 +395,7 @@ class Cassandra(tkinter.Tk):
 		rate= num/den
 		return rate
 
+	#Clear all input so as to allow user start a new session
 	def ResetCassandra(self):
 		self._UCS_entry.delete(0, len(self._UCS_entry.get()))
 		self._min_entry.delete(0, len(self._min_entry.get()))
@@ -408,9 +414,11 @@ class Cassandra(tkinter.Tk):
 		self._reservoiroutput_label.config(text="Reservoir type:")
 		self._cddresult.config(text="Critical Drawdown:")
 
+	#call the About module so the user can read a detailed description of the app
 	def AboutCassandra(self):
 		About.About(self.parent, app, About.message)
 
+	#call the Help module so the user can read instructions to guide the app's usage
 	def HelpCassandra(self):
 		Help.Help(self.parent,app, Help.message)
 
