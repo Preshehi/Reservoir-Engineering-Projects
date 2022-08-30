@@ -1,6 +1,8 @@
+#import important libraries
 import tkinter
 from tkinter.font import Font
 
+#Create a frame to display the message
 def About(frame, window, message):
 	aboutfile=tkinter.Toplevel(frame, bg="white")
 	aboutfile.grab_set()
@@ -14,6 +16,7 @@ def About(frame, window, message):
 	aboutfile.geometry("600x350+{}+{}".format(100+x,158+y))
 	aboutfile.title(string="About Cassandra")
 
+#Write a brief description of what the app is about
 message="""
 Cassandra is a software that simulates the sand production
 environment of a typical petroleum reservoir. It operates
