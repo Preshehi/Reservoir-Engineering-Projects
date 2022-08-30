@@ -1,9 +1,13 @@
+#import important libraries
 import tkinter
 from tkinter.font import Font
 
+#Create a subclass of the Exception module to handle errors on the app
 class Error(Exception):
 	pass
 
+#Now we attempt to define different functions to handle different types of error that could possibly occur in the use of the app
+#Each error also comes with an error message to assist users
 def ErrorTopLevel(frame, window, message):
 	errorfile=tkinter.Toplevel(frame, bg="white")
 	errorfile.grab_set()
