@@ -1,6 +1,8 @@
+#import important libraries
 import tkinter
 from tkinter.font import Font
 
+#Create a frame to display instructions for how to use the app
 def Help(frame, window, message):
 	helpfile=tkinter.Toplevel(frame, bg="white")
 	helpfile.grab_set()
@@ -30,6 +32,7 @@ def Help(frame, window, message):
 		elif x==3:
 			helplabel.config(text=message2)
 
+#Define messages to be displayed on the frame
 message="""
 Cassandra takes eight input parameters, 5 of which are 
 always required while the last three are dependent on
